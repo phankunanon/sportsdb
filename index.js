@@ -9,6 +9,12 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
+app.get('/news/add', function (req, res) {
+    res.render('add_news', {
+      title:'News'
+    })
+  })
+  
 app.post('/', function (req, res) {
   res.send('you sent a post request.')
 })
