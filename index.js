@@ -6,8 +6,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
-  res.render('index')
-})
+    let data = [
+      {id:1,title:'news1',body:'this is news 1.'},
+      {id:2,title:'news2',body:'this is news 2.'},
+      {id:3,title:'news3',body:'this is news 3.'}
+    ];
+    res.render('index', {
+      title:'Home',
+      news: data
+    })
+  })
+  
 
 app.get('/news/add', function (req, res) {
     res.render('add_news', {
