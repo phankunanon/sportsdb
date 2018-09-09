@@ -1,9 +1,8 @@
 extends layout
-
 block content
     h1 #{title}
     each n in news
-        h4= "ตารางแข่งประจำวันที่"+n.date.getDate()+"/"+(n.date.getMonth()+1)+"/"+n.date.getFullYear()
-        ul= n.time+"\t\t\t\t"+n.teamA +"\tVs\t"+ n.teamB
+        h4= "ตารางแข่งประจำวันที่ "+n.date.getDate()+"/"+(n.date.getMonth()+1)+"/"+n.date.getFullYear()
+        ul= n.time+" "+n.teamA +" Vs "+ n.teamB
 
 

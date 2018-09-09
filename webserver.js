@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
     }else{
       res.render('index2', {title:'Welcome To Thailand E-Sports Schedule', news: data});
     }
-  });
+  }).sort({date:1}).sort({time:1});
 });
 
 app.get('/match/add', function (req, res) {
