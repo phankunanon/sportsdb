@@ -9,6 +9,10 @@ db.once('open', function(){console.log('connected to MongoDB.')});
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 
 const Article = require('./models/article2');
 //Route
@@ -22,11 +26,26 @@ app.get('/', function (req, res) {
   });
 });
 
-app.get('/news/add', function (req, res) {
-    res.render('add_news', {
-      title:'News'
-    })
+app.get('/match/add', function (req, res) {
+  res.render('add_match', {
+    title:'Add Match'
   })
+})
+app.post('/match/add', function (req, res) {
+  let article = new Article();
+  article.teamA = req.body.teamA
+  article.teamB = req.body.teamB
+  article.date = req.body.date
+  article.time = req.body.time
+  article.save(function(err){
+    if(err){
+      console.log(err)
+    }else{
+      res.redirect('/')
+    }
+  })
+})
+
   
 app.post('/', function (req, res) {
   res.send('you sent a post request.')
