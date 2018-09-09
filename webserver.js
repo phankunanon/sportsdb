@@ -10,14 +10,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 
-const Article = require('./models/article');
+const Article = require('./models/article2');
 //Route
 app.get('/', function (req, res) {
   Article.find({}, function(err, data){
     if(err){
       console.log(err);
     }else{
-      res.render('index', {title:'Home', news: data});
+      res.render('index2', {title:'Welcome To Thailand E-Sports Schedule', news: data});
     }
   });
 });
