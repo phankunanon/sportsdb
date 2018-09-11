@@ -14,16 +14,21 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-const Article = require('./models/article2');
+const Match = require('./models/match');
 //Route
 app.get('/', function (req, res) {
-  Article.find({}, function(err, data){
+  Match.find({}, function(err, data){
     if(err){
       console.log(err);
     }else{
       res.render('index2', {title:'Welcome To Thailand E-Sports Schedule', news: data});
     }
   }).sort({date:1}).sort({time:1});
+});
+app.post('/',function(req,res){
+  res.render('add_match', {
+    title:'Add Match'
+  });
 });
 
 app.get('/match/add', function (req, res) {
@@ -32,12 +37,12 @@ app.get('/match/add', function (req, res) {
   })
 })
 app.post('/match/add', function (req, res) {
-  let article = new Article();
-  article.teamA = req.body.teamA
-  article.teamB = req.body.teamB
-  article.date = req.body.date
-  article.time = req.body.time
-  article.save(function(err){
+  let match = new Match();
+  match.teamA = req.body.teamA
+  match.teamB = req.body.teamB
+  match.date = req.body.date
+  match.time = req.body.time
+  match.save(function(err){
     if(err){
       console.log(err)
     }else{

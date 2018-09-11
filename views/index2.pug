@@ -4,5 +4,8 @@ block content
     each n in news
         h4= "ตารางแข่งประจำวันที่ "+n.date.getDate()+"/"+(n.date.getMonth()+1)+"/"+n.date.getFullYear()
         ul= n.time+" "+n.teamA +" Vs "+ n.teamB
+    
+    form(method='POST', action='/')
+        input.btn.btn-primary(type='submit',value='Add Match')
 
 
